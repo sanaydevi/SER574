@@ -12,10 +12,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Put data in a port. 
+ * Put data in a port.
  * It uses Publisher-Assistants to be able to attend more than one client
  * at the same time.
- * 
+ *
  * @author javiergs
  */
 public class Publisher implements Observer, Runnable {
@@ -40,7 +40,7 @@ public class Publisher implements Observer, Runnable {
 
   /**
    * Create new PublisherAssistant each time that a connection is detected
-   * 
+   *
    */
   @Override
   public void run() {
@@ -57,7 +57,7 @@ public class Publisher implements Observer, Runnable {
       Socket socket = null;
       try {
         socket = listener.accept();
-        if (observable == null) continue;  
+        if (observable == null) continue;
         PublisherAssistant assistant = new PublisherAssistant(socket, observable);
         threads.add(assistant);
         executor.submit(assistant);
@@ -78,17 +78,17 @@ public class Publisher implements Observer, Runnable {
     } catch (InterruptedException ie) {
     }
   }
-  
+
   /**
    * This method is called when the class that we are observing change.
    * Every PublisherAssistant is notified of the change
-   * 
+   *
    * @param o is the object that we are observing
    * @param arg is a parameter that we are not using
    */
   @Override
   public void update(Observable o, Object arg) {
-                  System.out.println("publisher updated");
+    System.out.println("publisher updated");
 
     this.observable = o;
     for (int i = 0; i < threads.size(); i++) {

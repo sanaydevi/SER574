@@ -28,7 +28,7 @@ public class PublisherAssistant implements Runnable {
     try {
       pw = new PrintWriter(socket.getOutputStream(), true);
       while (!stop) {
-            System.out.println("***** assistant loop - " + updated);
+        System.out.println("***** assistant loop - " + updated);
 
         if (!updated) continue;
         post(pw);
@@ -54,7 +54,7 @@ public class PublisherAssistant implements Runnable {
   }
 
   public void updated() {
-   System.out.println("***** assistant updated");
+    System.out.println("***** assistant updated");
 
     updated = true;
   }
