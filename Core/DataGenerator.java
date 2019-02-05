@@ -61,6 +61,19 @@ class DataGenerator extends Observable implements Runnable {
             float thinking =  (float) ((thinkInput - 0.1) + new Random().nextFloat()*(thinkInput - (thinkInput - 0.1)));
             float unsure =  (float) ((unsureInput - 0.1) + new Random().nextFloat()*(unsureInput - (unsureInput - 0.1)));
             
+            if (agree < 0) 
+            	agree = (float) 0.0000000;
+            if (disagree < 0) 
+            	disagree = (float) 0.0000000;
+            if (frustrate < 0) 
+            	frustrate = (float) 0.0000000;
+            if (concentrate < 0) 
+            	concentrate = (float) 0.0000000;
+            if (thinking < 0) 
+            	thinking = (float) 0.0000000;
+            if (unsure < 0) 
+            	unsure = (float) 0.0000000;
+            
             createAndNotify(timeStamp, agree, disagree, frustrate, concentrate, thinking, unsure);
             try {
                 Thread.sleep(1000);
